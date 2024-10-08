@@ -36,7 +36,7 @@ namespace Code.Gameplay.Features.Enemies.Factory
           .With(x => x[Stats.MaxHp] = 3)
           .With(x => x[Stats.Damage] = 1);
       
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
           .AddId(_identifiers.Next())
           .AddEnemyTypeId(EnemyTypeId.Goblin)
           .AddWorldPosition(at)

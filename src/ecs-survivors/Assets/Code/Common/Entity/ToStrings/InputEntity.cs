@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
 using Code.Common.Entity.ToStrings;
-using Code.Common.Extensions;
-using Code.Gameplay.Features.Enemies;
-using Code.Gameplay.Features.Hero;
 using Entitas;
 using UnityEngine;
 
-public sealed partial class GameEntity : INamedEntity
+public sealed partial class InputEntity : INamedEntity
 {
     private EntityPrinter _printer;
 
@@ -33,11 +29,7 @@ public sealed partial class GameEntity : INamedEntity
             {
                 switch (component.GetType().Name)
                 {
-                    case nameof(Hero):
-                        return PrintHero();
 
-                    case nameof(Enemy):
-                        return PrintEnemy();
                 }
             }
         }
@@ -48,18 +40,6 @@ public sealed partial class GameEntity : INamedEntity
 
         return components.First().GetType().Name;
     }
-
-    private string PrintHero()
-    {
-        return new StringBuilder($"Hero ")
-          .With(s => s.Append($"Id:{Id}"), when: hasId)
-          .ToString();
-    }
-
-    private string PrintEnemy() =>
-      new StringBuilder($"Enemy ")
-        .With(s => s.Append($"Id:{Id}"), when: hasId)
-        .ToString();
 
     public string BaseToString() => base.ToString();
 }

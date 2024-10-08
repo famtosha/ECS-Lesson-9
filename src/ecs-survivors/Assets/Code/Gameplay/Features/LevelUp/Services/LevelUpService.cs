@@ -34,7 +34,7 @@ namespace Code.Gameplay.Features.LevelUp.Services
       CurrentExperience -= experienceForLevelUp;
       CurrentLevel++;
 
-      CreateEntity.Empty().isLevelUp = true;
+      CreateGameEntity.Empty().isLevelUp = true;
 
       UpdateLevel();
     }

@@ -22,7 +22,7 @@ namespace Code.Gameplay.Features.Hero.Factory
         .With(x => x[Stats.Speed] = 2)
         .With(x => x[Stats.MaxHp] = 100);
       
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
         .AddId(_identifiers.Next())
         .AddWorldPosition(at)
         .AddBaseStats(baseStats)

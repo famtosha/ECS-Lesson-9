@@ -31,7 +31,7 @@ namespace Code.Gameplay.Features.Effects.Factory
 
     private GameEntity CreateDamage(int producerId, int targetId, float value)
     {
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
         .AddId(_identifiers.Next())
         .With(x => x.isEffect = true)
         .With(x => x.isDamageEffect = true)
@@ -42,7 +42,7 @@ namespace Code.Gameplay.Features.Effects.Factory
 
     private GameEntity CreateHeal(int producerId, int targetId, float value)
     {
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
         .AddId(_identifiers.Next())
         .With(x => x.isEffect = true)
         .With(x => x.isHealEffect = true)

@@ -22,7 +22,7 @@ namespace Code.Gameplay.Features.Abilities.Factory
     {
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.VegetableBolt, level);
       
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
         .AddId(_identifiers.Next())
         .AddAbilityId(AbilityId.VegetableBolt)
         .AddCooldown(abilityLevel.Cooldown)
@@ -34,7 +34,7 @@ namespace Code.Gameplay.Features.Abilities.Factory
     {
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.OrbitingMushroom, level);
       
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
         .AddId(_identifiers.Next())
         .AddAbilityId(AbilityId.OrbitingMushroom)
         .AddCooldown(abilityLevel.Cooldown)
@@ -46,7 +46,7 @@ namespace Code.Gameplay.Features.Abilities.Factory
 
     public GameEntity CreateGarlicAuraAbility()
     {
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
         .AddId(_identifiers.Next())
         .AddAbilityId(AbilityId.GarlicAura)
         .With(x => x.isGarlicAuraAbility = true)

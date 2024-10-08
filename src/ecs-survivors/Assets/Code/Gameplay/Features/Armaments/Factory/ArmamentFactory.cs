@@ -50,7 +50,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.GarlicAura, level);
       AuraSetup setup = abilityLevel.AuraSetup;
 
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
           .AddId(_identifiers.Next())
           .AddParentAbility(parentAbilityId)
           .AddViewPrefab(abilityLevel.ViewPrefab)
@@ -69,7 +69,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
 
     private GameEntity CreateProjectileEntity(Vector3 at, AbilityLevel abilityLevel, ProjectileSetup setup)
     {
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
         .AddId(_identifiers.Next())
         .With(x => x.isArmament = true)
         .AddViewPrefab(abilityLevel.ViewPrefab)
@@ -93,7 +93,7 @@ namespace Code.Gameplay.Features.Armaments.Factory
     {
       EnchantConfig config = _staticDataService.GetEnchantConfig(EnchantTypeId.ExplosiveArmaments);
       
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
         .AddId(_identifiers.Next())
         .AddLayerMask(CollisionLayer.Enemy.AsMask())
         .AddRadius(config.Radius)

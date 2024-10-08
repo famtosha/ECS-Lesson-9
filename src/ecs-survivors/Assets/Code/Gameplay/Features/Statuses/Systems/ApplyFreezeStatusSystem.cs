@@ -27,7 +27,7 @@ namespace Code.Gameplay.Features.Statuses.Systems
     {
       foreach (GameEntity status in _statuses.GetEntities(_buffer))
       {
-        CreateEntity.Empty()
+        CreateGameEntity.Empty()
           .AddStatChange(Stats.Speed)
           .AddTargetId(status.TargetId)
           .AddProducerId(status.ProducerId)

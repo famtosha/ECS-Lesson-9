@@ -51,7 +51,7 @@ namespace Code.Gameplay.Features.LevelUp.Windows
 
     private void OnSelected(AbilityId id)
     {
-      CreateEntity.Empty()
+      CreateGameEntity.Empty()
         .AddAbilityId(id)
         .isUpgradeRequest = true;
 

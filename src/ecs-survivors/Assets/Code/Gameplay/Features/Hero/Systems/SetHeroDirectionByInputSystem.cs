@@ -2,27 +2,29 @@
 
 namespace Code.Gameplay.Features.Hero.Systems
 {
-  public class SetHeroDirectionByInputSystem : IExecuteSystem
-  {
-    private readonly IGroup<GameEntity> _heroes;
-    private readonly IGroup<GameEntity> _inputs;
-
-    public SetHeroDirectionByInputSystem(GameContext game)
+    public class SetHeroDirectionByInputSystem : IExecuteSystem
     {
-      _heroes = game.GetGroup(GameMatcher.Hero);
-      _inputs = game.GetGroup(GameMatcher.Input);
-    }
-    
-    public void Execute()
-    {
-      foreach (GameEntity input in _inputs)
-      foreach (GameEntity hero in _heroes)
-      {
-        hero.isMoving = input.hasAxisInput;
+        private readonly IGroup<GameEntity> _heroes;
+        private readonly IGroup<InputEntity> _inputs;
 
-        if (input.hasAxisInput) 
-          hero.ReplaceDirection(input.AxisInput.normalized);
-      }
+        public SetHeroDirectionByInputSystem(GameContext game, InputContext input)
+        {
+            _heroes = game.GetGroup(GameMatcher.Hero);
+            _inputs = input.GetGroup(InputMatcher.Input);
+        }
+
+        public void Execute()
+        {
+            foreach (InputEntity input in _inputs)
+            {
+                foreach (GameEntity hero in _heroes)
+                {
+                    hero.isMoving = input.hasAxisInput;
+
+                    if (input.hasAxisInput)
+                        hero.ReplaceDirection(input.AxisInput.normalized);
+                }
+            }
+        }
     }
-  }
 }

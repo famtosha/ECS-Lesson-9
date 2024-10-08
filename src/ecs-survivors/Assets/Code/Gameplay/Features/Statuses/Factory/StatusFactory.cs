@@ -49,7 +49,7 @@ namespace Code.Gameplay.Features.Statuses.Factory
 
     private GameEntity CreatePoisonStatus(StatusSetup setup, int producerId, int targetId)
     {
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
         .AddId(_identifiers.Next())
         .AddStatusTypeId(StatusTypeId.Poison)
         .AddEffectValue(setup.Value)
@@ -62,7 +62,7 @@ namespace Code.Gameplay.Features.Statuses.Factory
 
     private GameEntity CreateFreezeStatus(StatusSetup setup, int producerId, int targetId)
     {
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
         .AddId(_identifiers.Next())
         .AddStatusTypeId(StatusTypeId.Freeze)
         .AddEffectValue(setup.Value)
@@ -75,7 +75,7 @@ namespace Code.Gameplay.Features.Statuses.Factory
 
     private GameEntity CreatePoisonEnchantStatus(StatusSetup setup, int producerId, int targetId)
     {
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
           .AddId(_identifiers.Next())
           .AddStatusTypeId(StatusTypeId.PoisonEnchant)
           .AddEnchantTypeId(EnchantTypeId.PoisonArmaments)
@@ -89,7 +89,7 @@ namespace Code.Gameplay.Features.Statuses.Factory
 
     private GameEntity CreateExplosiveEnchantStatus(StatusSetup setup, int producerId, int targetId)
     {
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
           .AddId(_identifiers.Next())
           .AddStatusTypeId(StatusTypeId.ExplosiveEnchant)
           .AddEnchantTypeId(EnchantTypeId.ExplosiveArmaments)

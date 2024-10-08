@@ -8,7 +8,7 @@ namespace Code.Gameplay.Features.Enemies.Systems
   {
     public void Initialize()
     {
-      CreateEntity.Empty()
+      CreateGameEntity.Empty()
         .AddSpawnTimer(GameplayConstants.EnemySpawnTimer);
     }
   }

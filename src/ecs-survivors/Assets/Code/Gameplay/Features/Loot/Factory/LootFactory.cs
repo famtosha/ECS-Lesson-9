@@ -22,7 +22,7 @@ namespace Code.Gameplay.Features.Loot.Factory
     {
       LootConfig config = _staticDataService.GetLootConfig(typeId);
 
-      return CreateEntity.Empty()
+      return CreateGameEntity.Empty()
           .AddId(_identifiers.Next())
           .AddWorldPosition(at)
           .AddLootTypeId(typeId)
