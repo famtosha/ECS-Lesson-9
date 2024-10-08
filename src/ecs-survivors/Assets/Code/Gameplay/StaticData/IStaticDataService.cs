@@ -4,13 +4,16 @@ using Code.Gameplay.Features.Enchants;
 using Code.Gameplay.Features.Loot;
 using Code.Gameplay.Features.Loot.Configs;
 using Code.Gameplay.Windows;
+using Code.Meta.Features.AFKGains;
 using UnityEngine;
 
 namespace Code.Gameplay.StaticData
 {
   public interface IStaticDataService
   {
-    void LoadAll();
+        AFKGainConfig AFKGain { get; }
+
+        void LoadAll();
     AbilityConfig GetAbilityConfig(AbilityId abilityId);
     AbilityLevel GetAbilityLevel(AbilityId abilityId, int level);
     EnchantConfig GetEnchantConfig(EnchantTypeId typeId);

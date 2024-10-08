@@ -1,3 +1,7 @@
+using Code.Common.Entity;
+using Code.Common.Extensions;
+using Code.Gameplay.Common.Time;
+using Code.Gameplay.StaticData;
 using Code.Infrastructure.States.StateInfrastructure;
 using Code.Infrastructure.States.StateMachine;
 using Code.Progress.Data;
@@ -5,38 +9,47 @@ using Code.Progress.Provider;
 
 namespace Code.Infrastructure.States.GameStates
 {
-  public class InitializeProgressState : IState
-  {
-    private readonly IGameStateMachine _stateMachine;
-    private readonly IProgressProvider _progressProvider;
-
-    public InitializeProgressState(
-      IGameStateMachine stateMachine,
-      IProgressProvider progressProvider)
+    public class InitializeProgressState : IState
     {
-      _stateMachine = stateMachine;
-      _progressProvider = progressProvider;
-    }
-    
-    public void Enter()
-    {
-      InitializeProgress();
+        private readonly IGameStateMachine _stateMachine;
+        private readonly IProgressProvider _progressProvider;
+        private readonly IStaticDataService _configs;
+        private readonly ITimeService _time;
 
-      _stateMachine.Enter<LoadingHomeScreenState>();
-    }
+        public InitializeProgressState(IGameStateMachine stateMachine, IProgressProvider progressProvider, IStaticDataService configs, ITimeService time)
+        {
+            _stateMachine = stateMachine;
+            _progressProvider = progressProvider;
+            _configs = configs;
+            _time = time;
+        }
 
-    private void InitializeProgress()
-    {
-      CreateNewProgress();
-    }
+        public void Enter()
+        {
+            InitializeProgress();
 
-    private void CreateNewProgress()
-    {
-      _progressProvider.SetProgressData(new ProgressData());
-    }
+            _stateMachine.Enter<ActualizeProgressState>();
+        }
 
-    public void Exit()
-    {
+        private void InitializeProgress()
+        {
+            CreateNewProgress();
+        }
+
+        private void CreateNewProgress()
+        {
+            _progressProvider.SetProgressData(new ProgressData() { LastSimulationTickTime = _time.UtcNow });
+
+            CreateMetaEntity
+                .Empty()
+                .With(x => x.isStorage = true)
+                .AddGold(0)
+                .AddGoldPerSercond(_configs.AFKGain.GoldPerSecond)
+                ;
+        }
+
+        public void Exit()
+        {
+        }
     }
-  }
 }
