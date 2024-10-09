@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: AFKGainConfig
   m_EditorClassIdentifier: 
   <GoldPerSecond>k__BackingField: 1
+  <GemPerSecond>k__BackingField: 1
+  <GemGainChance>k__BackingField: 0.5

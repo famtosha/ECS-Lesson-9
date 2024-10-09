@@ -44,7 +44,15 @@ namespace Code.Infrastructure.States.GameStates
                 .Empty()
                 .With(x => x.isStorage = true)
                 .AddGold(0)
-                .AddGoldPerSercond(_configs.AFKGain.GoldPerSecond)
+                .AddGoldPerSecond(_configs.AFKGain.GoldPerSecond)
+                ;
+
+            CreateMetaEntity
+                .Empty()
+                .With(x => x.isStorage = true)
+                .AddGems(0)
+                .AddGemsPerSecond(_configs.AFKGain.GemPerSecond)
+                .AddGainChance(_configs.AFKGain.GemGainChance)
                 ;
         }
 

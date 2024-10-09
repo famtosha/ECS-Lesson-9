@@ -21,19 +21,19 @@ namespace Code.Meta.Features.Simulation
             _storages = game.GetGroup(MetaMatcher
                 .AllOf(
                 MetaMatcher.Storage,
-                MetaMatcher.GoldPerSercond));
+                MetaMatcher.GoldPerSecond));
         }
 
         public void Execute()
         {
             foreach (MetaEntity storage in _storages)
             {
-                float gainMultplier = 1f;
+                float gainMultiplier = 1f;
                 foreach (MetaEntity booster in _boosters)
                 {
-                    gainMultplier += booster.GoldGainBoost;
+                    gainMultiplier += booster.GoldGainBoost;
                 }
-                storage.ReplaceGoldPerSercond(_configs.AFKGain.GoldPerSecond * gainMultplier);
+                storage.ReplaceGoldPerSecond(_configs.AFKGain.GoldPerSecond * gainMultiplier);
             }
         }
     }

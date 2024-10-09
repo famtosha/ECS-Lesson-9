@@ -12,19 +12,25 @@ public static class MetaComponentsLookup {
     public const int Duration = 1;
     public const int GoldGainBoost = 2;
     public const int Tick = 3;
-    public const int Gold = 4;
-    public const int GoldPerSercond = 5;
-    public const int Storage = 6;
+    public const int GainChance = 4;
+    public const int Gems = 5;
+    public const int GemsPerSecond = 6;
+    public const int Gold = 7;
+    public const int GoldPerSecond = 8;
+    public const int Storage = 9;
 
-    public const int TotalComponents = 7;
+    public const int TotalComponents = 10;
 
     public static readonly string[] componentNames = {
         "Destructed",
         "Duration",
         "GoldGainBoost",
         "Tick",
+        "GainChance",
+        "Gems",
+        "GemsPerSecond",
         "Gold",
-        "GoldPerSercond",
+        "GoldPerSecond",
         "Storage"
     };
 
@@ -33,8 +39,11 @@ public static class MetaComponentsLookup {
         typeof(Code.Meta.Features.Simulation.Duration),
         typeof(Code.Meta.Features.Simulation.GoldGainBoost),
         typeof(Code.Meta.Features.Simulation.Tick),
+        typeof(Code.Meta.Features.Storage.GainChance),
+        typeof(Code.Meta.Features.Storage.Gems),
+        typeof(Code.Meta.Features.Storage.GemsPerSecond),
         typeof(Code.Meta.Features.Storage.Gold),
-        typeof(Code.Meta.Features.Storage.GoldPerSercond),
+        typeof(Code.Meta.Features.Storage.GoldPerSecond),
         typeof(Code.Meta.Features.Storage.Storage)
     };
 }

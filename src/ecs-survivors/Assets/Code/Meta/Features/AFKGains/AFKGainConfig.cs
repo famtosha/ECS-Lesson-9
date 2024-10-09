@@ -6,5 +6,8 @@ namespace Code.Meta.Features.AFKGains
     public class AFKGainConfig : ScriptableObject
     {
         [field: SerializeField] public float GoldPerSecond { get; private set; }
+
+        [field: SerializeField] public float GemPerSecond { get; private set; }
+        [field: SerializeField] public float GemGainChance { get; private set; }
     }
 }
