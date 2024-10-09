@@ -1,5 +1,4 @@
 ﻿using Code.Infrastructure.Systems;
-using static Code.Meta.Features.Simulation.AFKGoldGainSystem;
 
 namespace Code.Meta.Features.Simulation
 {

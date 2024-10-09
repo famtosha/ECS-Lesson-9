@@ -11,7 +11,6 @@ namespace Code.Meta
             Add(systems.Create<EmitTickSystem>(1f));
 
             Add(systems.Create<SimulationFeature>());
-            Add(systems.Create<ActualizationFeature>());
 
             Add(systems.Create<CleanupTickSystem>());
 
