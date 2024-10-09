@@ -1,25 +1,28 @@
-﻿using Entitas;
+﻿using Code.Gameplay.Common.Random;
+using Entitas;
 
 namespace Code.Meta.Features.Simulation
 {
-    public class AFKGoldGainSystem : IExecuteSystem
+    public class AFKGemGainSystem : IExecuteSystem
     {
         private readonly MetaContext _game;
+        private readonly IRandomService _random;
         private readonly IGroup<MetaEntity> _ticks;
         private readonly IGroup<MetaEntity> _gainers;
 
-        public AFKGoldGainSystem(MetaContext game)
+        public AFKGemGainSystem(MetaContext game, IRandomService random)
         {
             _game = game;
-
+            _random = random;
             _ticks = game.GetGroup(MetaMatcher
                 .AllOf(
                 MetaMatcher.Tick));
 
             _gainers = game.GetGroup(MetaMatcher
                 .AllOf(
-                MetaMatcher.GoldPerSecond,
-                MetaMatcher.Gold,
+                MetaMatcher.GemsPerSecond,
+                MetaMatcher.Gems,
+                MetaMatcher.GainChance,
                 MetaMatcher.Storage));
         }
 
@@ -29,7 +32,10 @@ namespace Code.Meta.Features.Simulation
             {
                 foreach (MetaEntity gainer in _gainers)
                 {
-                    gainer.ReplaceGold(gainer.Gold + (gainer.GoldPerSecond * tick.Tick));
+                    if (gainer.GainChance > _random.Range(0f, 1f))
+                    {
+                        gainer.ReplaceGems(gainer.Gems + (gainer.GemsPerSecond * tick.Tick));
+                    }
                 }
             }
         }

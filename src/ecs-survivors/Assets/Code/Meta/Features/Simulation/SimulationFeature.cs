@@ -7,6 +7,7 @@ namespace Code.Meta.Features.Simulation
         public SimulationFeature(ISystemFactory systems)
         {
             Add(systems.Create<AFKGoldGainSystem>());
+            Add(systems.Create<AFKGemGainSystem>());
             Add(systems.Create<CalculateGoldGainSystem>());
             Add(systems.Create<BoosterDurationSystem>());
             Add(systems.Create<UpdateSimulationTimeSystem>());
